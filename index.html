@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Weather</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <span id="loader" class="loader"></span>
+    <div id="wrapper" class="wrapper">
+      <div
+        style="height: 100vh"
+        class="container d-flex flex-column align-items-center justify-content-center"
+      >
+        <div class="card p-5">
+          <p class="h1" style="text-align: center">Weather</p>
+          <h4 id="city1">Город:</h4>
+          <h4 id="temp">Температура:</h4>
+          <h4 id="feelsLike">Ощущается как:</h4>
+          <!-- <h4 id="minTemp">Минимальная температура:</h4>
+          <h4 id="maxTemp">Максимальная температура:</h4> -->
+          <h4 id="description">Описание:</h4>
+
+          <button class="btn-primary" onclick="getWeather()">
+            Узнать погоду
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
