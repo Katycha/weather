@@ -9,10 +9,6 @@ loader.style.display = "block";
 async function getWeather() {
   const city = prompt("Введите город");
 
-  const responseImage = await fetch(
-    `https://api.teleport.org/api/urban_areas/slug:${city}/images/`
-  );
-
   const response = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=ru`
   );
@@ -20,6 +16,17 @@ async function getWeather() {
   const result = await response.json();
 
   console.log("result:", result);
+
+  const responseImage = await fetch(
+    `https://api.teleport.org/api/urban_areas/slug:${city}/images/`
+  );
+  const cityImage = await responseImage.json();
+
+  if (cityImage.photos) {
+    document.body.style.background = `url(${cityImage.photos[0].image.web})`;
+  } else {
+    document.body.style.background = `url('https://images.ctfassets.net/hrltx12pl8hq/6TIZLa1AKeBel0yVO7ReIn/1fc0e2fd9fcc6d66b3cc733aa2547e11/weather-images.jpg?fit=fill&w=1200&h=630')`;
+  }
 
   const cityH2 = document.getElementById("city1");
   cityH2.innerHTML = `Город:  ${result.name}`;
